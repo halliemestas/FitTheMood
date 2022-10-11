@@ -12,6 +12,8 @@
 
 <a href="mailto: halliemestas@gmail.com">Email: halliemestas@gmail.com</a>
 
+<a href='https://github.com/halliemestas'>Github: Hallie Mestas</a>
+
 <a href="mailto: martin.connere@gmail.com">Email: martin.connere@gmail.com</a>
 
 <a href='https://github.com/ConnerMart'>Github: Conner Martin</a>
