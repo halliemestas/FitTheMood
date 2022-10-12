@@ -1,7 +1,35 @@
 # Fit the Mood
 
 
-## Collaborators 
+## Description
+
+
+
+## Table of Contents
+
+  1. [Installation Instructions](#installation)
+
+  2. [Usage Information](#usage)
+
+  3. [Contributions](#contribution)
+
+  4. [Testing](#testing)
+
+  5. [License information](#Licensing)
+
+
+
+  ## Installation
+
+
+  
+  ## Usage
+
+
+  ## Contribution
+  
+### Collaborators 
+
 <a href="mailto: zachary.feltman@gmail.com">Email: zachary.feltman@gmail.com</a>
 
 <a href='https://github.com/ZacharyFeltman'>Github: Zachary Feltman</a>
@@ -25,3 +53,13 @@
 <a href="mailto: sktmh007@gmail.com">Email: sktmh007@gmail.com</a>
 
 <a href='https://github.com/SThevenot'>Github: Sarah Thevenot</a>
+  
+
+  ## Testing
+
+  This application has no testing.
+
+  ## Licensing
+
+  This application has no license.
+

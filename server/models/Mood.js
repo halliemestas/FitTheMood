@@ -1,18 +1,22 @@
-const { Schema } = require('mongoose');
 
-// This is a subdocument schema, it won't become its own model but we'll use it as the schema for the User's `savedMoods` array in User.js
+const { Schema } = require("mongoose");
+
 const moodSchema = new Schema({
   overall: [
     {
-      type: int,
+      type: Number,
+      required: true,
     },
   ],
   feeling: {
-    
+    type: [String],
   },
-  summary: {
+  notes: {
     type: String,
-  }
+  },
 });
 
-module.exports = moodSchema;
+const Mood = model("Mood", moodSchema);
+
+module.exports = Mood;
+
