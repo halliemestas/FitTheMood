@@ -84,5 +84,7 @@ const SingupForm = () => {
             </Button>
         </Form>
     </>
-  )
+  );
 };
+
+export default SignupForm;
