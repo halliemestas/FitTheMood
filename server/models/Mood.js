@@ -1,3 +1,4 @@
+
 const { Schema } = require("mongoose");
 
 const moodSchema = new Schema({
@@ -18,3 +19,4 @@ const moodSchema = new Schema({
 const Mood = model("Mood", moodSchema);
 
 module.exports = Mood;
+
