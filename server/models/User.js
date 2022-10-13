@@ -1,10 +1,37 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
 
 // import schema from Mood.js
-const moodSchema = require('./Mood');
+const moodSchema = new Schema({
+  overall: [
+    {
+      type: Number,
+      required: true,
+    },
+  ],
+  feeling: {
+    type: [String],
+  },
+  notes: {
+    type: String,
+  },
+});
 // import schema from Workout.js
-const workoutSchema = require('./Workout')
+const workoutSchema = new Schema({
+  duration: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+  workout: {
+    type: String,
+    required: true,
+  },
+  summary: {
+    type: String,
+  },
+});
 
 const userSchema = new Schema(
   {
@@ -20,7 +47,7 @@ const userSchema = new Schema(
     // set savedMoods to be an array of data that adheres to the moodSchema
     savedMoods: [moodSchema],
     // set savedWorkouts to be an array of data that adheres to the workoutSchema
-    savedWorkouts: [workoutSchema]
+    savedWorkouts: [workoutSchema],
   },
   // set this to use virtual below
   {
@@ -31,8 +58,8 @@ const userSchema = new Schema(
 );
 
 // hash user password
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
@@ -45,6 +72,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
