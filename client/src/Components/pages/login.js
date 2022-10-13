@@ -4,11 +4,12 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
-//import { loginUser } from "../../utils/API";
 import Auth from "../../utils/auth";
 
 
-const LoginForm = () => {
+
+const Login = () => {
+
   const [userFormData, setUserFormData] = useState({
     username: "",
     password: "",
@@ -99,4 +100,5 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Login;
+
