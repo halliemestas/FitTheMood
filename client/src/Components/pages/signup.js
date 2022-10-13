@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
 
-import { createUser } from "../../utils/API";
+// import { createUser } from "../../utils/API";
 import Auth from "../../utils/auth";
 
 const SignupForm = () => {
@@ -28,19 +28,19 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-    try {
-        const response = await createUser(userFormData);
-        if (!response.ok) {
-            throw new Error('Not Signed Up');
-        }
+    // try {
+    //     const response = await createUser(userFormData);
+    //     if (!response.ok) {
+    //         throw new Error('Not Signed Up');
+    //     }
 
-        const { token, user } = await response.json();
-        console.log(user);
-        Auth.login(token);
-    } catch (error) {
-        console.log(error);
-        setShowAlert(true)
-    }
+    //     const { token, user } = await response.json();
+    //     console.log(user);
+    //     Auth.login(token);
+    // } catch (error) {
+    //     console.log(error);
+    //     setShowAlert(true)
+    // }
 
     setUserFormData({
         username: '',
@@ -50,6 +50,7 @@ const SignupForm = () => {
 
   return (
     <>
+      <h2>Sign Up</h2>
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                 Oops! Something went wrong with your singup!
