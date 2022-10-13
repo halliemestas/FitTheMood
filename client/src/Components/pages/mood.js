@@ -2,76 +2,248 @@
 import React from "react";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
-import RangeSlider from 'react-bootstrap-range-slider';
-
-
+import RangeSlider from "react-bootstrap-range-slider";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import paul from "../../images/Paul.png";
+import Container from "react-bootstrap/Container";
+import CardGroup from "react-bootstrap/CardGroup";
 
 function Mood() {
-  const [ value, setValue ] = React.useState(1);
+  //triggering modal to pop up
+  const [show, setShow] = useState(false);
+  //Close button
+  const handleClose = () => setShow(false);
+  //Save button
+  const handleShow = () => setShow(true);
+  //Sets default value of range slider to 5
+  const [value, setValue] = React.useState(5);
+
   return (
-    <div>
-    <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Rate your mood</Form.Label>
-        <RangeSlider
-        min={1}
-        max={10}
-          value={value}
-          onChange={e => setValue(e.target.value)}
-        />
-        <Form.Text className="text-muted">
-          1 is "I feel horrible" and 10 is "I feel fantastic"
-        </Form.Text>
-      </Form.Group>
-      <Form.Group className="mb-3">
-      <Form.Label>Describe how you're feeling</Form.Label>
-      {['checkbox'].map((type) => (
-        <div key={`inline-${type}`} className="mb-3">
-          <Form.Check
-            inline
-            label="happy"
-            name="group1"
-            type={type}
-            id={`inline-${type}-1`}
-          />
-          <Form.Check
-            inline
-            label="excited"
-            name="group1"
-            type={type}
-            id={`inline-${type}-2`}
-          />
-          <Form.Check
-            inline
-            label="anxious"
-            type={type}
-            id={`inline-${type}-3`}
-          />
-          <Form.Check
-            inline
-            label="depressed"
-            type={type}
-            id={`inline-${type}-3`}
-          />
-          <Form.Check
-            inline
-            label="frustrated"
-            type={type}
-            id={`inline-${type}-3`}
-          />
-          <Form.Check
-            inline
-            label="stressed"
-            type={type}
-            id={`inline-${type}-3`}
-          />
-        </div>
-      ))}
-      <Form.Label>Is there anything you would like to note about today</Form.Label>
-        <Form.Control as="textarea" rows={3} />
-      </Form.Group>
-      </Form>
+    <>
+      <div>
+        <Container>
+          <div className="paul" style={{ textAlign: "center" }}>
+            <Row>
+              <Col>
+                <img src={paul} alt="Paul" style={{ width: "15rem" }}></img>
+              </Col>
+              <Col>
+                <div>
+                  <h2
+                    style={{
+                      position: "relative",
+                      border: "black 2px solid",
+                      borderRadius: "100px",
+                      width: "200px",
+                      marginTop: "50px",
+                    }}
+                  >
+                    Howdy!
+                  </h2>
+                </div>
+              </Col>
+            </Row>
+          </div>
+          <div>
+            <Button 
+            style={{backgroundColor: "#99A799", border: "#99A799", backgroundColorHover: "#D3E4CD"}} className="m-3" onClick={handleShow}>
+              Add Moods!
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Mood Questionaire</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Rate your mood</Form.Label>
+                    <RangeSlider
+                      min={1}
+                      max={10}
+                      value={value}
+                      onChange={(e) => setValue(e.target.value)}
+                    />
+                    <Form.Text className="text-muted">
+                      1 is "I feel horrible" and 10 is "I feel fantastic"
+                    </Form.Text>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Describe how you're feeling</Form.Label>
+                    {["checkbox"].map((type) => (
+                      <div key={`inline-${type}`} className="mb-3">
+                        <Form.Check
+                          inline
+                          label="happy"
+                          name="group1"
+                          type={type}
+                          id={`inline-${type}-1`}
+                        />
+                        <Form.Check
+                          inline
+                          label="excited"
+                          name="group1"
+                          type={type}
+                          id={`inline-${type}-2`}
+                        />
+                        <Form.Check
+                          inline
+                          label="anxious"
+                          type={type}
+                          id={`inline-${type}-3`}
+                        />
+                        <Form.Check
+                          inline
+                          label="depressed"
+                          type={type}
+                          id={`inline-${type}-3`}
+                        />
+                        <Form.Check
+                          inline
+                          label="frustrated"
+                          type={type}
+                          id={`inline-${type}-3`}
+                        />
+                        <Form.Check
+                          inline
+                          label="stressed"
+                          type={type}
+                          id={`inline-${type}-3`}
+                        />
+                      </div>
+                    ))}
+                    <Form.Label>
+                      Is there anything you would like to note about today
+                    </Form.Label>
+                    <Form.Control as="textarea" rows={3} />
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+          <Col xs={1} md={3} lg={4}></Col>
+          <CardGroup style={{backgroundColor: "#E2C2B9", padding: "20px", borderRadius: "20px"}}>
+            <Col>
+              <Card>
+                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Body>
+                  <Card.Title>Monday</Card.Title>
+                  <Card.Text>
+                    User's answers to mood Questionaire go here and an image
+                    based on which adjective they picked for their mood?
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted">Date here</small>
+                </Card.Footer>
+              </Card>
+            </Col>
+            <Col>
+              <Card>
+                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Body>
+                  <Card.Title>Tuesday</Card.Title>
+                  <Card.Text>
+                    User's answers to mood Questionaire go here and an image
+                    based on which adjective they picked for their mood?
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted">Date here</small>
+                </Card.Footer>
+              </Card>
+            </Col>
+            <Col>
+              <Card>
+                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Body>
+                  <Card.Title>Wednesday</Card.Title>
+                  <Card.Text>
+                    User's answers to mood Questionaire go here and an image
+                    based on which adjective they picked for their mood?
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted">Date here</small>
+                </Card.Footer>
+              </Card>
+            </Col>
+            <Col>
+              <Card>
+                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Body>
+                  <Card.Title>Thursday</Card.Title>
+                  <Card.Text>
+                    User's answers to mood Questionaire go here and an image
+                    based on which adjective they picked for their mood?
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted">Date here</small>
+                </Card.Footer>
+              </Card>
+            </Col>
+            <Col>
+              <Card>
+                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Body>
+                  <Card.Title>Friday</Card.Title>
+                  <Card.Text>
+                    User's answers to mood Questionaire go here and an image
+                    based on which adjective they picked for their mood?
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted">Date here</small>
+                </Card.Footer>
+              </Card>
+            </Col>
+            <Col>
+              <Card>
+                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Body>
+                  <Card.Title>Saturday</Card.Title>
+                  <Card.Text>
+                    User's answers to mood Questionaire go here and an image
+                    based on which adjective they picked for their mood?
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted">Date here</small>
+                </Card.Footer>
+              </Card>
+            </Col>
+            <Col>
+              <Card>
+                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Body>
+                  <Card.Title>Sunday</Card.Title>
+                  <Card.Text>
+                    User's answers to mood Questionaire go here and an image
+                    based on which adjective they picked for their mood?
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted">Date here</small>
+                </Card.Footer>
+              </Card>
+            </Col>
+          </CardGroup>
+        </Container>
       </div>
+    </>
   );
 }
 
