@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-boostrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button"
+import Alert from "react-bootstrap/Alert"
 
 import { createUser } from "../../utils/API";
 import Auth from "../../utils/auth";
 
-const SingupForm = () => {
+const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({
     username: "",
     password: "",
@@ -49,7 +51,7 @@ const SingupForm = () => {
   return (
     <>
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'></Alert>
+            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                 Oops! Something went wrong with your singup!
             </Alert>
         
