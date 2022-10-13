@@ -1,15 +1,18 @@
 /** @format */
 
 import React from "react";
-import login from "./Components/pages/login";
-import Mood from "./Components/pages/mood"
+import Login from "./Components/pages/login";
+import Mood from "./Components/pages/mood";
+import NavBar from "./Components/pages/navbar";
 
 function App() {
-    return (
-        <>
-    <Mood/>
-        </>
-    )
+  return (
+    <>
+      <Mood />
+      <Login />
+      <NavBar />
+    </>
+  );
 }
 
 export default App;
