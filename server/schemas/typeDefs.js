@@ -5,8 +5,8 @@ const typeDefs = gql`
     _id: ID
     username: String!
     password: String!
-    savedMoods: Mood
-    savedWorkouts: Workout
+    savedMoods: [Mood]
+    savedWorkouts: [Workout]
   }
 
   type Workout {
@@ -23,6 +23,11 @@ const typeDefs = gql`
     notes: String
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     me: User
   }
@@ -30,10 +35,9 @@ const typeDefs = gql`
   type Mutation {
     login(username: String!, password: String!): Auth
     addUser(username: String!, password: String!): Auth
-    addWorkout(duration: String!, workout: String, summary: String): User
-    addMood(overall:Int!, feeling: String!, notes: String!)
+    addWorkout(duration: String!, workout: String!, summary: String): User
+    addMood(overall: Int!, feeling: String!, notes: String!): User
   }
-
 `;
 
 module.exports = typeDefs;
