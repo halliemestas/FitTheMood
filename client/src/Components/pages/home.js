@@ -22,6 +22,7 @@ function Home() {
   //Sets default value of range slider to 5
   const [value, setValue] = React.useState(5);
   return (
+    
     <div style={{ backgroundColor: "#FFF8EA" }}>
       <Container>
         <Row>
@@ -29,6 +30,91 @@ function Home() {
         <img src={paul} alt="Paul"></img>
         </Col>
       <Col>
+      <Card style={{marginTop: "50px"}}>
+          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Body>
+            <Card.Title>Today's Workout</Card.Title>
+            <Card.Text>
+              User's input from a workout.
+            </Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <small className="text-muted">Date here</small>
+          </Card.Footer>
+        </Card>
+        <div>
+        <Button
+          style={{
+            backgroundColor: "#99A799",
+            border: "#99A799",
+            backgroundColorHover: "#D3E4CD",
+          }}
+          className="m-3"
+          onClick={handleShow}
+        >
+          Add Workout!
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Workout Questionaire</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group>
+                    <Form.Label>How long did you workout for?</Form.Label>
+                    <Form.Check
+                        type="radio"
+                        label="0-30 Minutes"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios1"
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="30-60 Minutes"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios2"
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="60-90 Minutes"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios3"
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="90+ Minutes"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios3"
+                      />
+
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>What type of workout did you do?</Form.Label>
+                    <Form.Control type="email" placeholder="Enter workout type" as="textarea" rows={1} />
+                    <Form.Text className="text-muted"></Form.Text>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Summary of your workout.</Form.Label>
+                    <Form.Control type="Summary" placeholder="Summary" as="textarea" rows={3} />
+              </Form.Group>
+
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+
+
         <Card style={{marginTop: "50px"}}>
           <Card.Img variant="top" src="holder.js/100px160" />
           <Card.Body>
