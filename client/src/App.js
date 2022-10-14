@@ -16,6 +16,7 @@ class App extends Component {
     return (
       <Router>
         <NavBar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
+        <div>
         <Routes>
           {/* <Route exact path="/" element={<Login />}></Route> */}
           <Route exact path="/" element={[<SignupForm />, <Login />]}></Route>
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/mood" element={<Mood />}></Route>
           <Route exact path="/workout" element={<Workout />}></Route>
         </Routes>
+        </div>
         <Footer/>
       </Router>
     );
