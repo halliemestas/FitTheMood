@@ -14,6 +14,7 @@ import Footer from "./Components/Footer";
 class App extends Component {
   render() {
     return (
+      <div class="background">
       <Router>
         <NavBar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
         <div>
@@ -27,6 +28,7 @@ class App extends Component {
         </div>
         <Footer/>
       </Router>
+      </div>
     );
   }
 }
