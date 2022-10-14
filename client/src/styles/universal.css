@@ -30,7 +30,7 @@
 }
 
 .mainDiv {
-  background-color: #FFF8EA;
+  background-color: #fff4ea;
   padding-bottom: 30px;
   width: 95%;
   text-align: center;
@@ -38,7 +38,8 @@
   padding: 2px;
   margin: 20px;
   position: relative;
-  
+  top: 100px;
+  margin-bottom: 120px;
 }
 
 .paulGreeting{
@@ -56,6 +57,7 @@
 }
 
 .headers{
+  margin-top: 80px;
   text-align: center;
   color: #C36A2D;
   text-decoration: underline;
@@ -91,6 +93,8 @@
 	padding: 2px;
 	margin: auto;
 	border-radius: 10px;
+	top: 100px;
+	margin-bottom: 100px;
 }
 
 .loginButton,
@@ -231,6 +235,10 @@
 
 .server .skillbar-bar {
 	background: #d43227;	
+}
+
+.background {
+	background-color: #e4956e;
 }
 
 
