@@ -73,7 +73,7 @@
 }
 
 .signupDiv {
-	margin-top: 150px !important;
+	margin-top: 90px !important;
 	margin-bottom: 50px !important;
 }
 
@@ -84,6 +84,7 @@
 }
 
 .loginDiv, .signupDiv {
+	margin-top: -65px;
 	background-color: #FFF8EA;
     padding-top: 50px !important;
     padding-bottom: 30px;
