@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-
+import "../../styles/universal.css"
 import Auth from "../../utils/auth";
 
 
@@ -52,7 +52,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="mainDiv">
     <h2>Log In</h2>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
@@ -64,7 +64,7 @@ const Login = () => {
           Login failed
         </Alert>
         <Form.Group>
-          <Form.Label htmlFor="username">Username</Form.Label>
+          <Form.Label htmlFor="username" className="padding1">Username</Form.Label>
           <Form.Control
             type="text"
             placeholder="Username"
@@ -72,13 +72,14 @@ const Login = () => {
             onChange={handleInputChange}
             value={userFormData.username}
             required
+            className="padding1"
           />
           <Form.Control.Feedback type="invalid">
             Username is required
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Label htmlFor="password" className="padding1">Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -86,6 +87,7 @@ const Login = () => {
             onChange={handleInputChange}
             value={userFormData.password}
             reqruired
+            className="padding1"
           />
           <Form.Control.Feedback type="invalid">
             Need Password
@@ -95,9 +97,10 @@ const Login = () => {
           disabled={!(userFormData.username && userFormData.password)}
           type="submit"
           variant="success"
-        ></Button>
+          className="buttonFormatter loginButton"
+        >Login</Button>
       </Form>
-    </>
+    </div>
   );
 };
 
