@@ -6,6 +6,7 @@ nav {
     height: 100px;
     background-color: #86340A;
     width: 100%;
+    top: 0px;
     z-index: 10;
     position: fixed;
     border-radius: 15px;
@@ -27,8 +28,10 @@ nav ul {
 }
 
 nav ul li {
-    font-size: large;
-    padding: 15px;
+  list-style: none;
+  text-align: center;
+  font-size: large;
+  padding: 15px;
 }
 
 nav ul li a {
@@ -87,6 +90,7 @@ color:#373a47;
     background: #FFF8EA;
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
+    display: flex;
   }
   
   /* Morph shape necessary with bubble or elastic */

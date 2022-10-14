@@ -52,7 +52,7 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="mainDiv">
+    <div className="mainDiv signupDiv">
       <h2>Sign Up</h2>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
