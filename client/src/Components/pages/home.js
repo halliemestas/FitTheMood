@@ -38,6 +38,50 @@ function Home() {
         <img src={paul} alt="Paul" id="paul"></img>
         </Col>
       <Col>
+      <div class="skillbar-wrapper">
+<div class="skillbar clearfix html5" data-percent="100%">
+	<h4 class="skillbar-title"><span>Cardio</span></h4>
+	<div class="skillbar-bar"></div>
+	<div class="skill-bar-percent">100%</div>
+</div>
+
+<div class="skillbar clearfix css" data-percent="100%">
+	<h4 class="skillbar-title"><span>Shoulders</span></h4>
+	<div class="skillbar-bar"></div>
+	<div class="skill-bar-percent">100%</div>
+</div>
+
+<div class="skillbar clearfix javascript" data-percent="100%">
+	<h4 class="skillbar-title"><span>Legs</span></h4>
+	<div class="skillbar-bar"></div>
+	<div class="skill-bar-percent">100%</div>
+</div>
+
+<div class="skillbar clearfix jquery" data-percent="100%">
+	<h4 class="skillbar-title"><span>Core</span></h4>
+	<div class="skillbar-bar"></div>
+	<div class="skill-bar-percent">100%</div>
+</div>
+
+<div class="skillbar clearfix php" data-percent="100%">
+	<h4 class="skillbar-title"><span>Shoulders</span></h4>
+	<div class="skillbar-bar"></div>
+	<div class="skill-bar-percent">100%</div>
+</div>
+
+<div class="skillbar clearfix wordpress" data-percent="100%">
+	<h4 class="skillbar-title"><span>Yoga</span></h4>
+	<div class="skillbar-bar"></div>
+	<div class="skill-bar-percent">100%</div>
+</div>
+
+<div class="skillbar clearfix server" data-percent="90%">
+	<h4 class="skillbar-title"><span>Back</span></h4>
+	<div class="skillbar-bar"></div>
+	<div class="skill-bar-percent">90%</div>
+</div>
+</div>	
+
       <div id="workoutDiv" className="div">
       <Card className="cardFormatter">
           <Card.Img variant="top" src="holder.js/100px160" />
