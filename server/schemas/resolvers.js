@@ -11,16 +11,6 @@ const resolvers = {
       return User.findOne({ _id: userId });
       //somehow we need to have this return a token and use when we are saving a mood or a workout...
     },
-    me: async (parent, args, context) => {
-      console.log(context, "test");
-      if (context.user) {
-        return User.findOne({ _id: context.user._id })
-          .populate("savedMoods")
-          .populate("savedWorkouts")
-          .select("-__v -password");
-      }
-      // throw new AuthenticationError("You need to be logged in!");
-    },
   },
 
   Mutation: {

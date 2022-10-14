@@ -10,24 +10,45 @@ import Workout from "./Components/pages/workout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
 
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+
+const client = new ApolloClient({
+  // link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 class App extends Component {
   render() {
     return (
       <div class="background">
-      <Router>
-        <NavBar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
-        <div>
-        <Routes>
-          {/* <Route exact path="/" element={<Login />}></Route> */}
-          <Route exact path="/" element={[<SignupForm />, <Login />]}></Route>
-          <Route exact path="/home" element={<Home />}></Route>
-          <Route exact path="/mood" element={<Mood />}></Route>
-          <Route exact path="/workout" element={<Workout />}></Route>
-        </Routes>
-        </div>
-        <Footer/>
-      </Router>
+        <ApolloProvider client={client}>
+          <Router>
+            <NavBar
+              pageWrapId={"page-wrap"}
+              outerContainerId={"outer-container"}
+            />
+            <div>
+              <Routes>
+                {/* <Route exact path="/" element={<Login />}></Route> */}
+                <Route
+                  exact
+                  path="/"
+                  element={[<SignupForm />, <Login />]}
+                ></Route>
+                <Route exact path="/home" element={<Home />}></Route>
+                <Route exact path="/mood" element={<Mood />}></Route>
+                <Route exact path="/workout" element={<Workout />}></Route>
+              </Routes>
+            </div>
+            <Footer />
+          </Router>
+        </ApolloProvider>
       </div>
     );
   }
