@@ -24,7 +24,8 @@ nav ul {
 }
 
 nav ul li {
-    display: inline-flex;
+  list-style: none;
+  text-align: center;
     font-size: large;
     padding: 15px;
 }
@@ -85,6 +86,7 @@ color:#373a47;
     background: #FFF8EA;
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
+    display: flex;
   }
   
   /* Morph shape necessary with bubble or elastic */

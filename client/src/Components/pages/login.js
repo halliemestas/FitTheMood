@@ -52,7 +52,7 @@ const Login = () => {
   };
 
   return (
-    <div className="mainDiv">
+    <div className="mainDiv loginDiv">
     <h2>Log In</h2>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
