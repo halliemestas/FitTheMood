@@ -76,3 +76,11 @@
 .padding1 {
   padding: 10px;
 }
+
+#workoutDiv {
+  padding-bottom: 65px;
+}
+
+#moodDiv {
+  padding-bottom: 65px;
+}
