@@ -9,7 +9,7 @@ import React from "react";
 export default props => {
   return (
     <nav>
-      <h1>Fit The Mood</h1>
+      <h1 class="headerFont">Fit The Mood</h1>
       <Menu {...props} right >
       <ul>
         <li>
