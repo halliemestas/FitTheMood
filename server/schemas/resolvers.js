@@ -4,6 +4,13 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    users: async () => {
+      return User.find();
+    },
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId });
+      //somehow we need to have this return a token and use when we are saving a mood or a workout...
+    },
     me: async (parent, args, context) => {
       console.log(context, "test");
       if (context.user) {
@@ -12,7 +19,7 @@ const resolvers = {
           .populate("savedWorkouts")
           .select("-__v -password");
       }
-      throw new AuthenticationError("You need to be logged in!");
+      // throw new AuthenticationError("You need to be logged in!");
     },
   },
 
@@ -31,6 +38,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+
       return { token, user };
     },
 
