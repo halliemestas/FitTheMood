@@ -11,6 +11,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/esm/Container";
 import paul from "../../images/Paul.png"
 import Row from "react-bootstrap/esm/Row";
+import "../../styles/universal.css"
 
 function Home() {
   //triggering modal to pop up
@@ -19,18 +20,26 @@ function Home() {
   const handleClose = () => setShow(false);
   //Save button
   const handleShow = () => setShow(true);
+  const [showWorkout, setShowWorkout] = useState(false);
+  //Close button
+  const handleWorkoutClose = () => setShowWorkout(false);
+  //Save button
+  const handleWorkoutShow = () => setShowWorkout(true);
+
+
   //Sets default value of range slider to 5
   const [value, setValue] = React.useState(5);
   return (
     
-    <div style={{ backgroundColor: "#FFF8EA" }}>
+    <div className="mainDiv">
       <Container>
         <Row>
         <Col>
-        <img src={paul} alt="Paul"></img>
+        <img src={paul} alt="Paul" id="paul"></img>
         </Col>
       <Col>
-      <Card style={{marginTop: "50px"}}>
+      <div id="workoutDiv" className="div">
+      <Card className="cardFormatter">
           <Card.Img variant="top" src="holder.js/100px160" />
           <Card.Body>
             <Card.Title>Today's Workout</Card.Title>
@@ -44,18 +53,13 @@ function Home() {
         </Card>
         <div>
         <Button
-          style={{
-            backgroundColor: "#99A799",
-            border: "#99A799",
-            backgroundColorHover: "#D3E4CD",
-          }}
-          className="m-3"
-          onClick={handleShow}
+          className="m-3 buttonFormatter"
+          onClick={handleWorkoutShow}
         >
           Add Workout!
         </Button>
 
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={showWorkout} onHide={handleWorkoutClose}>
           <Modal.Header closeButton>
             <Modal.Title>Workout Questionaire</Modal.Title>
           </Modal.Header>
@@ -104,17 +108,18 @@ function Home() {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={handleWorkoutClose} className="buttonFormatter">
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button className="buttonFormatter" variant="primary" onClick={handleWorkoutClose}>
               Save
             </Button>
           </Modal.Footer>
         </Modal>
       </div>
+      </div>
 
-
+          <div id="moodDiv" className="div">
         <Card style={{marginTop: "50px"}}>
           <Card.Img variant="top" src="holder.js/100px160" />
           <Card.Body>
@@ -130,12 +135,7 @@ function Home() {
         </Card>
         <div>
         <Button
-          style={{
-            backgroundColor: "#99A799",
-            border: "#99A799",
-            backgroundColorHover: "#D3E4CD",
-          }}
-          className="m-3"
+          className="m-3 buttonFormatter"
           onClick={handleShow}
         >
           Add Moods!
@@ -211,14 +211,15 @@ function Home() {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button className="buttonFormatter" variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button className="buttonFormatter" variant="primary" onClick={handleClose}>
               Save
             </Button>
           </Modal.Footer>
         </Modal>
+      </div>
       </div>
       </Col>
       </Row>

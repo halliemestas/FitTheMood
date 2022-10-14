@@ -21,7 +21,10 @@ function WorkoutForm() {
 
   return (
     <>
-      <div>
+      <div className="mainDiv">
+        <h1 className="headers">
+        Log your workouts!
+        </h1>
         <Container>
           <div className="paul" style={{ textAlign: "center" }}>
             <Row>
@@ -30,14 +33,7 @@ function WorkoutForm() {
               </Col>
               <Col>
                 <div>
-                  <h2
-                    style={{
-                      position: "relative",
-                      border: "black 2px solid",
-                      borderRadius: "100px",
-                      width: "200px",
-                      marginTop: "50px",
-                    }}
+                  <h2 className="paulGreeting"
                   >
                     Howdy!
                   </h2>
@@ -46,8 +42,7 @@ function WorkoutForm() {
             </Row>
           </div>
           <div>
-            <Button 
-            style={{backgroundColor: "#99A799", border: "#99A799", backgroundColorHover: "#D3E4CD"}} className="m-3" onClick={handleShow}>
+            <Button  className="m-3 buttonFormatter" onClick={handleShow}>
               Add Workout!
             </Button>
 
@@ -99,17 +94,17 @@ function WorkoutForm() {
                     </Form>
                   </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={handleClose} className="buttonFormatter">
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={handleClose} className="buttonFormatter">
                   Save
                 </Button>
               </Modal.Footer>
             </Modal>
           </div>
           <Col xs={1} md={3} lg={4}></Col>
-          <CardGroup style={{backgroundColor: "#E2C2B9", padding: "20px", borderRadius: "20px"}}>
+          <CardGroup className="cardGroup">
             <Col>
               <Card>
                 <Card.Img variant="top" src="holder.js/100px160" />

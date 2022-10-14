@@ -1,0 +1,56 @@
+footer div {
+    background-color: #E0C097;
+    height: 200px !important;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    height: 140px;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: #B85C38;
+    background-color: #E0C097;
+  }
+  
+  footer button {
+    background-color: #E0C097;
+    border: none;
+    margin: 30px 50px;
+    font-size: 50px;
+    cursor: pointer;
+  }
+
+  svg {
+    background-color: #E0C097;
+  }
+
+  footer a:hover {
+    color: #753422;
+  }
+
+  .nameHover {
+    position: relative;
+    display: inline-block;
+  }
+  .nameHover .nameText{
+    visibility: hidden;
+    width: 100px;
+    background-color: #D79771;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: small;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+
+
+  .nameHover:hover .nameText {
+    visibility: visible;
+    margin-bottom: 100px;
+
+  }
