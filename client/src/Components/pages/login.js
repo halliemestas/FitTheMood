@@ -100,6 +100,7 @@ const Login = () => {
           className="buttonFormatter loginButton"
         >Login</Button>
       </Form>
+      <hr className="horizontalRule"/>
     </div>
   );
 };
