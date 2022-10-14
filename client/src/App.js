@@ -1,14 +1,15 @@
 /** @format */
 
 import React, { Component } from "react";
-import Login from "./Components/pages/Login";
-import Mood from "./Components/pages/Mood";
+import Login from "./Components/pages/login";
+import Mood from "./Components/pages/mood";
 import NavBar from "./Components/NavBar";
-import Home from "./Components/pages/Home";
-import SignupForm from "./Components/pages/Signup";
-import Workout from "./Components/pages/Workout";
+import Home from "./Components/pages/home";
+import SignupForm from "./Components/pages/signup";
+import Workout from "./Components/pages/workout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
+
 
 class App extends Component {
   render() {
