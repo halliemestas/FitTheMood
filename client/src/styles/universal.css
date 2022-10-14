@@ -31,8 +31,14 @@
 
 .mainDiv {
   background-color: #FFF8EA;
-  padding-top: 150px !important;
   padding-bottom: 30px;
+  width: 60%;
+  text-align: center;
+  border: 15px solid #86340A;
+  padding: 2px;
+  margin: 20px;
+  position: relative;
+  
 }
 
 .paulGreeting{
@@ -64,8 +70,27 @@
   margin: 50px auto;
 }
 
+.signupDiv {
+	margin-top: 150px !important;
+	margin-bottom: 50px !important;
+}
+
 .loginDiv {
   padding-top: 50px !important;
+  margin-bottom: 120px !important;
+  margin-top: 50px;
+}
+
+.loginDiv, .signupDiv {
+	background-color: #FFF8EA;
+    padding-top: 50px !important;
+    padding-bottom: 30px;
+	width: 60%;
+	text-align: center;
+	border: 15px solid #86340A;
+	padding: 2px;
+	margin: auto;
+	border-radius: 10px;
 }
 
 .loginButton,
@@ -208,16 +233,4 @@
 	background: #d43227;	
 }
 
-.loginDiv, .signupDiv {
-	background-color: #FFF8EA;
-    padding-top: 150px !important;
-    padding-bottom: 30px;
-	width: 60%;
-	text-align: center;
-	border: 15px solid #86340A;
-	padding: 2px;
-	margin: 20px;
-	position: relative;
-	top: 160px;
-	left: 260px;
-}
+
