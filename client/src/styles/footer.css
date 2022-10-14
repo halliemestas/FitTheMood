@@ -1,10 +1,9 @@
 footer div {
     background-color: #E0C097;
-    height: 200px !important;
+    height: 150px !important;
     text-align: center;
     display: flex;
     justify-content: space-evenly;
-    height: 140px;
   }
   
   footer a {
@@ -16,7 +15,7 @@ footer div {
   footer button {
     background-color: #E0C097;
     border: none;
-    margin: 30px 50px;
+    margin: 30px;
     font-size: 50px;
     cursor: pointer;
   }
