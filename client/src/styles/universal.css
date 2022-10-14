@@ -1,0 +1,78 @@
+/**
+ * /* styling for home page
+ *
+ * @format
+ */
+
+* {
+  background-color: #FFF8EA;
+}
+.div {
+  background-color: #ffbf86;
+  padding: 1px 10px;
+  margin: 30px auto;
+  border-radius: 10px;
+}
+
+.cardFormatter {
+  margin-top: 50px;
+}
+
+.buttonFormatter {
+  background-color: #C36A2D !important;
+  border: #C36A2D !important;
+}
+
+.buttonFormatter:hover {
+  background-color: #FED2AA !important;
+}
+
+#paul {
+  padding-top: 100px;
+}
+
+.mainDiv {
+  background-color: #FFF8EA;
+  margin-top: 100px !important;
+
+}
+
+.paulGreeting{
+  position: relative;
+  border: 2px black solid;
+  border-radius: 100px;
+  width: 200px;
+  margin-top: 50px;
+}
+
+.cardGroup {
+  background-color: #C36A2D;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.headers{
+  text-align: center;
+  color: #C36A2D;
+  text-decoration: underline;
+  padding-bottom: 30px;
+}
+
+.horizontalRule {
+  color: #C36A2D;
+  border: #C36A2D 2px solid;
+  width: 80%;
+  border-radius: 2px;
+  margin: 50px auto;
+}
+
+.loginButton,
+.signupButton {
+  margin-top: 20px !important;
+  margin-bottom: 30px !important;
+  margin-left: 20px;
+}
+
+.padding1 {
+  padding: 10px;
+}
