@@ -7,11 +7,12 @@ nav {
     width: 100%;
     z-index: 10;
     position: fixed;
+    border-radius: 15px;
 }
 
  nav h1 {
     padding-left: 30px;
-    width: 500px;
+    width: 100%;
     color: #FFEBC9;
     padding-top: 22px;
     background-color: #86340A;
