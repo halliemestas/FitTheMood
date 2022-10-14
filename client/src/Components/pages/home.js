@@ -28,6 +28,8 @@ function Home() {
 
   //Sets default value of range slider to 5
   const [value, setValue] = React.useState(5);
+  const todaysDate = Date(Date.now());
+
   return (
     <div className="mainDiv">
       <Container>
@@ -102,7 +104,7 @@ function Home() {
                   <Card.Text>User's input from a workout.</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  <small className="text-muted">Date here</small>
+                  <small className="text-muted">{todaysDate}</small>
                 </Card.Footer>
               </Card>
               <div>
@@ -205,7 +207,7 @@ function Home() {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  <small className="text-muted">Date here</small>
+                  <small className="text-muted">{todaysDate}</small>
                 </Card.Footer>
               </Card>
               <div>
