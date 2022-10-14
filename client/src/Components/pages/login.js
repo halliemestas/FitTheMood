@@ -1,21 +1,20 @@
-
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-import "../../styles/universal.css"
+import "../../styles/universal.css";
 import Auth from "../../utils/auth";
-
-
+import { useMutation } from "@apollo/react-hooks";
+import { LOGIN_USER } from "../../utils/mutations";
 
 const Login = () => {
-
   const [userFormData, setUserFormData] = useState({
     username: "",
     password: "",
   });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [login] = useMutation(LOGIN_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -31,19 +30,16 @@ const Login = () => {
       event.stopPropagation();
     }
 
-    // try {
-    //   const response = await loginUser(userFormData);
-    //   if (!response.ok) {
-    //     throw new Error("login failed");
-    //   }
-
-    //   const { token, user } = await response.json();
-    //   console.log(user);
-    //   Auth.login(token);
-    // } catch (error) {
-    //   console.log(error);
-    //   setShowAlert(true);
-    // }
+    try {
+      const { data } = await login({
+        variables: { ...userFormData },
+      });
+      console.log("logged IN");
+      Auth.login(data.login.token);
+    } catch (err) {
+      console.log(err);
+      setShowAlert(true);
+    }
 
     setUserFormData({
       username: "",
@@ -53,7 +49,7 @@ const Login = () => {
 
   return (
     <div className="mainDiv loginDiv">
-    <h2>Log In</h2>
+      <h2>Log In</h2>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
           dismissible
@@ -64,22 +60,26 @@ const Login = () => {
           Login failed
         </Alert>
         <Form.Group>
-          <Form.Label htmlFor="username" className="padding1">Username</Form.Label>
+          <Form.Label htmlFor="username" className="padding1">
+            Username
+          </Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Username"
-            name="Username"
+            type="input"
+            placeholder="username"
+            name="username"
             onChange={handleInputChange}
             value={userFormData.username}
-            required
+            reqruired
             className="padding1"
           />
           <Form.Control.Feedback type="invalid">
-            Username is required
+            Need Username
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="password" className="padding1">Password</Form.Label>
+          <Form.Label htmlFor="password" className="padding1">
+            Password
+          </Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -93,17 +93,20 @@ const Login = () => {
             Need Password
           </Form.Control.Feedback>
         </Form.Group>
+
         <Button
           disabled={!(userFormData.username && userFormData.password)}
           type="submit"
           variant="success"
           className="buttonFormatter loginButton"
-        >Login</Button>
+          onClick={handleFormSubmit}
+        >
+          Login
+        </Button>
       </Form>
-      <hr className="horizontalRule"/>
+      <hr className="horizontalRule" />
     </div>
   );
 };
 
 export default Login;
-
