@@ -33,6 +33,14 @@
   background-color: #FFF8EA;
   padding-top: 100px !important;
   padding-bottom: 30px;
+  width: 60%;
+  text-align: center;
+  border: 15px solid #86340A;
+  padding: 2px;
+  margin: 20px;
+  position: relative;
+  top: 160px;
+  left: 260px;
 }
 
 .paulGreeting{
