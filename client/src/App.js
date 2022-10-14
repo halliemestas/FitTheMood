@@ -10,6 +10,7 @@ import Workout from "./Components/pages/Workout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
 
+
 class App extends Component {
   render() {
     return (
