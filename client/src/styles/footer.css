@@ -1,4 +1,5 @@
 footer div {
+    position: relative;
     background-color: #E0C097;
     height: 150px !important;
     text-align: center;
