@@ -5,6 +5,7 @@ nav {
     height: 100px;
     background-color: #86340A;
     width: 100%;
+    top: 0px;
     z-index: 10;
     position: fixed;
     border-radius: 15px;
