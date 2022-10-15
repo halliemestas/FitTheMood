@@ -35,10 +35,10 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-    console.log("hi!");
+    console.log("hi");
 
     try {
-      console.log("hi again!");
+      console.log("hi again");
 
       const { data } = await addUser({ variables: { ...userFormData } });
 
@@ -49,14 +49,14 @@ const SignupForm = () => {
         console.log(error.message);
       }
 
-      console.log("hi 4!");
+      console.log("hi 4");
       // const { token, user } = await data.json();
       // console.log(user);
       // Auth.addUser(token);
 
       Auth.login(data.addUser.token);
 
-      console.log("Signed Up!");
+      console.log("Signed up!");
     } catch (error) {
       console.log(error);
       setShowAlert(true);
