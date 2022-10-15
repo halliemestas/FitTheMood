@@ -14,6 +14,13 @@ const resolvers = {
   },
 
   Mutation: {
+    addUser: async (parent, { username, password }) => {
+      const user = await User.create({ username, password });
+      const token = signToken(user);
+
+      return { token, user };
+    },
+
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 
@@ -34,12 +41,6 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (parent, { username, password }) => {
-      const user = await User.create({ username, password });
-      const token = signToken(user);
-
-      return { token, user };
-    },
     addWorkout: async (
       parent,
       { userId, duration, workout, summary },
@@ -68,6 +69,7 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
+
     addMood: async (parent, { userId, overall, feeling, notes }, context) => {
       console.log(context.user, "5");
       console.log(overall, "6");

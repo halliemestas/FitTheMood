@@ -35,18 +35,27 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
+    console.log("hi!");
+
     try {
+      console.log("hi again!");
+
       const { data } = await addUser({ variables: { ...userFormData } });
+
+      console.log("hi the third time");
 
       if (error) {
         // throw new Error("Not Signed Up");
         console.log(error.message);
       }
 
+      console.log("hi 4!");
       // const { token, user } = await data.json();
       // console.log(user);
       // Auth.addUser(token);
+
       Auth.login(data.addUser.token);
+
       console.log("Signed Up!");
     } catch (error) {
       console.log(error);
@@ -60,65 +69,63 @@ const SignupForm = () => {
   };
 
   return (
-    <>
-      <div className="mainDiv signupDiv">
-        <h2>Sign Up</h2>
-        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-          <Alert
-            dismissible
-            onClose={() => setShowAlert(false)}
-            show={showAlert}
-            variant="danger"
-          >
-            Something went wrong with your signup.
-          </Alert>
+    <div className="mainDiv signupDiv">
+      <h2>Sign Up</h2>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        <Alert
+          dismissible
+          onClose={() => setShowAlert(false)}
+          show={showAlert}
+          variant="danger"
+        >
+          Something went wrong with your signup.
+        </Alert>
 
-          <Form.Group>
-            <Form.Label htmlFor="username" className="padding1">
-              Username
-            </Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Username"
-              name="username"
-              onChange={handleInputChange}
-              value={userFormData.username}
-              required
-              className="padding1"
-            />
-            <Form.Control.Feedback type="invalid">
-              Invalid Username
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="password" className="padding1">
-              Password
-            </Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              name="password"
-              onChange={handleInputChange}
-              value={userFormData.password}
-              required
-              className="padding1"
-            />
-            <Form.Control.Feedback type="invalid">
-              Password is required
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Button
-            disabled={!(userFormData.username && userFormData.password)}
-            type="submit"
-            variant="success"
-            className="buttonFormatter signupButton"
-          >
-            Signup
-          </Button>
-        </Form>
-        <hr className="horizontalRule" />
-      </div>
-    </>
+        <Form.Group>
+          <Form.Label htmlFor="username" className="padding1">
+            Username
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Username"
+            name="username"
+            onChange={handleInputChange}
+            value={userFormData.username}
+            required
+            className="padding1"
+          />
+          <Form.Control.Feedback type="invalid">
+            Invalid Username
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="password" className="padding1">
+            Password
+          </Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            onChange={handleInputChange}
+            value={userFormData.password}
+            required
+            className="padding1"
+          />
+          <Form.Control.Feedback type="invalid">
+            Password is required
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Button
+          disabled={!(userFormData.username && userFormData.password)}
+          type="submit"
+          variant="success"
+          className="buttonFormatter signupButton"
+        >
+          Signup
+        </Button>
+      </Form>
+      <hr className="horizontalRule" />
+    </div>
   );
 };
 
