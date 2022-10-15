@@ -7,11 +7,12 @@ const resolvers = {
     allUsers: async () => {
       return User.find();
     },
+
     user: async (parent, { userId }) => {
       return User.findOne({ _id: userId });
       //somehow we need to have this return a token and use when we are saving a mood or a workout...
     },
-    // we MIGHT be able to use context on this now?
+
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
