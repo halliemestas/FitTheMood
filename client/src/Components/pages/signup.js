@@ -9,6 +9,9 @@ import "../../styles/universal.css";
 // import { createUser } from "../../utils/API";
 import Auth from "../../utils/auth";
 
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../../utils/mutations";
+
 const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({
     username: "",
@@ -16,6 +19,7 @@ const SignupForm = () => {
   });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -31,19 +35,32 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-    // try {
-    //     const response = await createUser(userFormData);
-    //     if (!response.ok) {
-    //         throw new Error('Not Signed Up');
-    //     }
+    console.log("hi");
 
-    //     const { token, user } = await response.json();
-    //     console.log(user);
-    //     Auth.login(token);
-    // } catch (error) {
-    //     console.log(error);
-    //     setShowAlert(true)
-    // }
+    try {
+      console.log("hi again");
+
+      const { data } = await addUser({ variables: { ...userFormData } });
+
+      console.log("hi the third time");
+
+      if (error) {
+        // throw new Error("Not Signed Up");
+        console.log(error.message);
+      }
+
+      console.log("hi 4");
+      // const { token, user } = await data.json();
+      // console.log(user);
+      // Auth.addUser(token);
+
+      Auth.login(data.addUser.token);
+
+      console.log("Signed up!");
+    } catch (error) {
+      console.log(error);
+      setShowAlert(true);
+    }
 
     setUserFormData({
       username: "",
@@ -61,11 +78,13 @@ const SignupForm = () => {
           show={showAlert}
           variant="danger"
         >
-          Oops! Something went wrong with your singup!
+          Something went wrong with your signup.
         </Alert>
 
         <Form.Group>
-          <Form.Label htmlFor="username" className="padding1">Username</Form.Label>
+          <Form.Label htmlFor="username" className="padding1">
+            Username
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="Username"
@@ -80,7 +99,9 @@ const SignupForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="password" className="padding1">Password</Form.Label>
+          <Form.Label htmlFor="password" className="padding1">
+            Password
+          </Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -95,13 +116,15 @@ const SignupForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.username && userFormData.Password)}
+          disabled={!(userFormData.username && userFormData.password)}
           type="submit"
           variant="success"
           className="buttonFormatter signupButton"
-        >Signup</Button>
+        >
+          Signup
+        </Button>
       </Form>
-      <hr className="horizontalRule"/>
+      <hr className="horizontalRule" />
     </div>
   );
 };

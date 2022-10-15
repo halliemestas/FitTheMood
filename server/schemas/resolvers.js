@@ -4,16 +4,36 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    users: async () => {
+    allUsers: async () => {
       return User.find();
     },
+
     user: async (parent, { userId }) => {
       return User.findOne({ _id: userId });
       //somehow we need to have this return a token and use when we are saving a mood or a workout...
     },
+
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError("You are not logged in.");
+    },
   },
 
   Mutation: {
+    addUser: async (parent, { username, password }) => {
+      //   const checkName = await User.findOne({ username });
+      //   if (checkName) {
+      //     throw new AuthenticationError("That username is already in use.");
+      //   }
+
+      const user = await User.create({ username, password });
+      const token = signToken(user);
+
+      return { token, user };
+    },
+
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 
@@ -34,12 +54,6 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (parent, { username, password }) => {
-      const user = await User.create({ username, password });
-      const token = signToken(user);
-
-      return { token, user };
-    },
     addWorkout: async (
       parent,
       { userId, duration, workout, summary },
@@ -68,6 +82,7 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
+
     addMood: async (parent, { userId, overall, feeling, notes }, context) => {
       console.log(context.user, "5");
       console.log(overall, "6");
