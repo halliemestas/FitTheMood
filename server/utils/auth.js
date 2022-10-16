@@ -28,9 +28,6 @@ module.exports = {
     }
 
     return req;
-
-    // send to next endpoint
-    // next();
   },
   signToken: function ({ username, _id }) {
     const payload = { username, _id };
