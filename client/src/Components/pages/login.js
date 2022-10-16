@@ -34,8 +34,8 @@ const Login = () => {
       const { data } = await login({
         variables: { ...userFormData },
       });
-      console.log("logged IN");
       Auth.login(data.login.token);
+      console.log("logged IN");
     } catch (err) {
       console.log(err);
       setShowAlert(true);
@@ -69,7 +69,7 @@ const Login = () => {
             name="username"
             onChange={handleInputChange}
             value={userFormData.username}
-            reqruired
+            requiered="true"
             className="padding1"
           />
           <Form.Control.Feedback type="invalid">
@@ -86,7 +86,7 @@ const Login = () => {
             name="password"
             onChange={handleInputChange}
             value={userFormData.password}
-            reqruired
+            requiered="true"
             className="padding1"
           />
           <Form.Control.Feedback type="invalid">

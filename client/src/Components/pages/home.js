@@ -36,61 +36,61 @@ function Home() {
         <Row>
           <Col>
             <img src={paul} alt="Paul" id="paul"></img>
-            <div class="skillbar-wrapper">
-              <div class="skillbar clearfix html5" data-percent="100%">
-                <h4 class="skillbar-title">
+            <div className="skillbar-wrapper">
+              <div className="skillbar clearfix html5" data-percent="100%">
+                <h4 className="skillbar-title">
                   <span>Cardio</span>
                 </h4>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">100%</div>
+                <div className="skillbar-bar"></div>
+                <div className="skill-bar-percent">100%</div>
               </div>
 
-              <div class="skillbar clearfix css" data-percent="100%">
-                <h4 class="skillbar-title">
+              <div className="skillbar clearfix css" data-percent="100%">
+                <h4 className="skillbar-title">
                   <span>Shoulders</span>
                 </h4>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">100%</div>
+                <div className="skillbar-bar"></div>
+                <div className="skill-bar-percent">100%</div>
               </div>
 
-              <div class="skillbar clearfix javascript" data-percent="100%">
-                <h4 class="skillbar-title">
+              <div className="skillbar clearfix javascript" data-percent="100%">
+                <h4 className="skillbar-title">
                   <span>Legs</span>
                 </h4>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">100%</div>
+                <div className="skillbar-bar"></div>
+                <div className="skill-bar-percent">100%</div>
               </div>
 
-              <div class="skillbar clearfix jquery" data-percent="100%">
-                <h4 class="skillbar-title">
+              <div className="skillbar clearfix jquery" data-percent="100%">
+                <h4 className="skillbar-title">
                   <span>Core</span>
                 </h4>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">100%</div>
+                <div className="skillbar-bar"></div>
+                <div className="skill-bar-percent">100%</div>
               </div>
 
-              <div class="skillbar clearfix php" data-percent="100%">
-                <h4 class="skillbar-title">
+              <div className="skillbar clearfix php" data-percent="100%">
+                <h4 className="skillbar-title">
                   <span>Shoulders</span>
                 </h4>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">100%</div>
+                <div className="skillbar-bar"></div>
+                <div className="skill-bar-percent">100%</div>
               </div>
 
-              <div class="skillbar clearfix wordpress" data-percent="100%">
-                <h4 class="skillbar-title">
+              <div className="skillbar clearfix wordpress" data-percent="100%">
+                <h4 className="skillbar-title">
                   <span>Yoga</span>
                 </h4>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">100%</div>
+                <div className="skillbar-bar"></div>
+                <div className="skill-bar-percent">100%</div>
               </div>
 
-              <div class="skillbar clearfix server" data-percent="90%">
-                <h4 class="skillbar-title">
+              <div className="skillbar clearfix server" data-percent="90%">
+                <h4 className="skillbar-title">
                   <span>Back</span>
                 </h4>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">90%</div>
+                <div className="skillbar-bar"></div>
+                <div className="skill-bar-percent">90%</div>
               </div>
             </div>
           </Col>
