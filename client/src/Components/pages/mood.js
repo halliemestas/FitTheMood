@@ -1,4 +1,5 @@
 /** @format */
+
 import React from "react";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
@@ -11,6 +12,10 @@ import Row from "react-bootstrap/Row";
 import paul from "../../images/Paul.png";
 import Container from "react-bootstrap/Container";
 import CardGroup from "react-bootstrap/CardGroup";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+
+import { ADD_MOOD, ADD_SKILL } from "../../utils/mutations";
 
 function Mood() {
   //triggering modal to pop up
@@ -22,12 +27,28 @@ function Mood() {
   //Sets default value of range slider to 5
   const [value, setValue] = React.useState(5);
 
+  const [mood, setMood] = useState("");
+
+  const [addMood, { error }] = useMutation(ADD_MOOD);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const data = await addMood({
+        variables: { mood },
+      });
+
+      setMood("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       <div className="mainDiv">
-        <h1 className="headers">
-          Log your moods!
-        </h1>
+        <h1 className="headers">Log your moods!</h1>
         <Container>
           <div className="paul" style={{ textAlign: "center" }}>
             <Row>
@@ -36,9 +57,7 @@ function Mood() {
               </Col>
               <Col>
                 <div>
-                  <h2 className="paulGreeting">
-                    Howdy!
-                  </h2>
+                  <h2 className="paulGreeting">Howdy!</h2>
                 </div>
               </Col>
             </Row>
@@ -75,6 +94,7 @@ function Mood() {
                           label="happy"
                           name="group1"
                           type={type}
+                          val
                           id={`inline-${type}-1`}
                         />
                         <Form.Check
@@ -113,15 +133,29 @@ function Mood() {
                     <Form.Label>
                       Is there anything you would like to note about today
                     </Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      value={mood}
+                      className="form-input w-100"
+                      onChange={(event) => setMood(event.target.value)}
+                    />
                   </Form.Group>
                 </Form>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose} className="buttonFormatter">
+                <Button
+                  variant="secondary"
+                  onClick={handleClose}
+                  className="buttonFormatter"
+                >
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose} className="buttonFormatter">
+                <Button
+                  variant="primary"
+                  onClick={handleClose}
+                  className="buttonFormatter"
+                >
                   Save
                 </Button>
               </Modal.Footer>
@@ -135,8 +169,7 @@ function Mood() {
                 <Card.Body>
                   <Card.Title>Monday</Card.Title>
                   <Card.Text>
-                    User's answers to mood Questionaire go here and an image
-                    based on which adjective they picked for their mood?
+                    {mood}
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer>
