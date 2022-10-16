@@ -37,6 +37,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -61,6 +62,7 @@ function App() {
           </div>
           <Footer />
         </Router>
+
       </div>
     </ApolloProvider>
   );

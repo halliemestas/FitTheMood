@@ -32,7 +32,7 @@
 .mainDiv {
   background-color: #fff4ea;
   padding-bottom: 30px;
-  width: 95%;
+  width: 100%;
   text-align: center;
   border: 15px solid #86340A;
   padding: 2px;
@@ -40,6 +40,7 @@
   position: relative;
   top: 100px;
   margin-bottom: 120px;
+  border-radius: 20px;
 }
 
 .paulGreeting{
@@ -240,6 +241,7 @@
 
 .background {
 	background-color: #e4956e;
+	width: auto !important;
 }
 
 
