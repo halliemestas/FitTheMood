@@ -40,14 +40,14 @@ const client = new ApolloClient({
 class App extends Component {
   render() {
     return (
-      <div class="background">
+      <div className="background">
         <ApolloProvider client={client}>
           <Router>
             <NavBar
               pageWrapId={"page-wrap"}
               outerContainerId={"outer-container"}
             />
-            <div>
+            <div className="background">
               <Routes>
                 {/* <Route exact path="/" element={<Login />}></Route> */}
                 <Route
