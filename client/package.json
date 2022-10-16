@@ -4,7 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
-    "@apollo/client": "^3.5.10",
+    "@apollo/client": "^3.7.0",
     "@apollo/react-hooks": "^4.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -19,7 +19,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "4.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

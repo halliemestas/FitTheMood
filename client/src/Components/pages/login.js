@@ -14,7 +14,7 @@ const Login = () => {
   });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [login] = useMutation(LOGIN_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -37,6 +37,7 @@ const Login = () => {
       Auth.login(data.login.token);
       console.log("logged IN");
     } catch (err) {
+      console.log("At least you entered the try block");
       console.log(err);
       setShowAlert(true);
     }
