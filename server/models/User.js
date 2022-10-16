@@ -2,36 +2,11 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // import schema from Mood.js
-const moodSchema = new Schema({
-  overall: [
-    {
-      type: Number,
-      required: true,
-    },
-  ],
-  feeling: {
-    type: [String],
-  },
-  notes: {
-    type: String,
-  },
-});
+
+const moodSchema = require("./Mood");
+
 // import schema from Workout.js
-const workoutSchema = new Schema({
-  duration: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
-  workout: {
-    type: String,
-    required: true,
-  },
-  summary: {
-    type: String,
-  },
-});
+const workoutSchema = require("./Workout");
 
 const userSchema = new Schema(
   {

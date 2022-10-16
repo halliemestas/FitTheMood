@@ -8,9 +8,12 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        const userData = await User.findOne({ _id: context.user._id }).select(
+          "-__v -password"
+        );
+        return userData;
       }
-      throw new AuthenticationError("You are not logged in.");
+      throw new AuthenticationError("Not logged in");
     },
   },
   Mutation: {
@@ -36,33 +39,25 @@ const resolvers = {
 
       return { token, user };
     },
-    addWorkout: async (parent, { userId, workout }, context) => {
-      // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
+    addWorkout: async (parent, { workoutId, duration, workout }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: userId },
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
           {
-            $addToSet: { savedWorkouts: workout },
-          }
-          // {
-          //   new: true,
-          //   runValidators: true,
-          // }
+            $push: {
+              savedWorkouts: {
+                workoutId: workoutId,
+                duration: duration,
+                workout: workout,
+              },
+            },
+          },
+          { new: true, runValidators: true }
         );
+        return updatedUser;
       }
-      // If user attempts to execute this mutation and isn't logged in, throw an error
       throw new AuthenticationError("You need to be logged in!");
     },
-    // removeBook: async (parent, { book }, context) => {
-    //   if (context.user) {
-    //     return User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $pull: { savedBooks: book } },
-    //       { new: true }
-    //     );
-    //   }
-    //   throw new AuthenticationError("You are not logged in.");
-    // },
   },
 };
 
