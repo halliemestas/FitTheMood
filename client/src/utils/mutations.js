@@ -23,22 +23,23 @@ export const ADD_USER = gql`
     }
   }
 `;
-// export const ADD_WORKOUT = gql`
-//   mutation addWorkout($userId: ID!, $workout: String!) {
-//     addWorkout(userId: $userId, workout: $workout) {
-//       _id
-//       username
-//       savedWorkouts
-//     }
-//   }
-// `;
 
-// export const ADD_MOOD = gql`
-//   mutation addMood($userId: ID!, $workout: String!) {
-//     addMood(userId: $userId, workout: $workout) {
-//       _id
-//       username
-//       savedMoods
-//     }
-//   }
-// `;
+export const ADD_WORKOUT = gql`
+  mutation addWorkout($userId: ID!, $workout: String!) {
+    addWorkout(userId: $userId, workout: $workout) {
+      _id
+      username
+      savedWorkouts
+    }
+  }
+`;
+
+export const ADD_MOOD = gql`
+  mutation addMood($userId: ID!, $workout: String!) {
+    addMood(userId: $userId, workout: $workout) {
+      _id
+      username
+      savedMoods
+    }
+  }
+`;
