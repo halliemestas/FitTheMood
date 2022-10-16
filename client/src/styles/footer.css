@@ -1,10 +1,10 @@
 footer div {
-    position: relative;
     background-color: #E0C097;
-    height: 150px !important;
+    height: fit-content !important;
     text-align: center;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
   }
   
   footer a {
