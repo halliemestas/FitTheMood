@@ -18,9 +18,7 @@ const resolvers = {
       const user = await User.findOne({ username });
 
       if (!user) {
-        throw new AuthenticationError(
-          "There is no profile with this username."
-        );
+        throw new AuthenticationError("There is no profile with this email.");
       }
 
       const correctPw = await user.isCorrectPassword(password);
