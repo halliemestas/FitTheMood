@@ -13,12 +13,12 @@ import paul from "../../images/Paul.png";
 import Container from "react-bootstrap/Container";
 import CardGroup from "react-bootstrap/CardGroup";
 
-import AuthService from "../../utils/auth";
+import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
 
 import { ADD_MOOD } from "../../utils/mutations";
 
-const Mood = ({ mood }) => {
+const Mood = () => {
   //triggering modal to pop up
   const [show, setShow] = useState(false);
   //Close button
@@ -26,13 +26,13 @@ const Mood = ({ mood }) => {
   //Save button
   const handleShow = () => setShow(true);
   //Sets default value of range slider to 5
-  const [value, setValue] = React.useState(5);
+  // const [value, setValue] = React.useState(5);
 
   const [enteredText, setEnteredText] = useState("");
   const [formState, setFormState] = useState(null);
-  let [toggleCards, setToggleCards] = useState(false);
+  // let [toggleCards, setToggleCards] = useState(false);
 
-  const [addNotes, { error, data }] = useMutation(ADD_MOOD);
+  const [addMood, { error, data }] = useMutation(ADD_MOOD);
 
   const textChangeHandler = (e) => {
     setEnteredText(e.target.value);
@@ -47,11 +47,30 @@ const Mood = ({ mood }) => {
   //   });
   // };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     setFormState(enteredText);
-    console.log(formState);
-    setEnteredText("");
+    // console.log(formState);
+    // console.log(enteredText);
+
+    // setEnteredText("");
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      console.log("test");
+      const response = await addMood(enteredText);
+
+      if (!response) {
+        console.log("Something went wrong");
+      }
+    } catch {
+      console.log("Catch block");
+    }
   };
 
   return (
@@ -150,9 +169,7 @@ const Mood = ({ mood }) => {
                         />
                       </div>
                     ))}*/}
-                    <Form.Label>
-                      Describe your mood
-                    </Form.Label> 
+                    <Form.Label>Describe your mood</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
