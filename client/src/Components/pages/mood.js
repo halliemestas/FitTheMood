@@ -17,7 +17,7 @@ import { useMutation } from "@apollo/client";
 
 import { ADD_MOOD, ADD_SKILL } from "../../utils/mutations";
 
-function Mood() {
+const Mood = ({ moods = false}) => {
   //triggering modal to pop up
   const [show, setShow] = useState(false);
   //Close button
@@ -42,6 +42,9 @@ function Mood() {
       setMood("");
     } catch (err) {
       console.error(err);
+    }
+    if (!moods.length) {
+      return <h3>No Skills Yet</h3>;
     }
   };
 
@@ -128,6 +131,18 @@ function Mood() {
                           type={type}
                           id={`inline-${type}-3`}
                         />
+                        <Form.Check
+                          inline
+                          label="doing Heroku deployment"
+                          type={type}
+                          id={`inline-${type}-3`}
+                        />
+                        <Form.Check
+                          inline
+                          label="working on project 3"
+                          type={type}
+                          id={`inline-${type}-3`}
+                        />
                       </div>
                     ))}
                     <Form.Label>
@@ -162,10 +177,11 @@ function Mood() {
             </Modal>
           </div>
           <Col xs={1} md={3} lg={4}></Col>
-          <CardGroup className="cardGroup">
+          {moods &&
+          moods.map((mood) => (
+          <CardGroup className="cardGroup" key={mood._id} >
             <Col>
               <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
                 <Card.Body>
                   <Card.Title>Monday</Card.Title>
                   <Card.Text>
@@ -177,9 +193,10 @@ function Mood() {
                 </Card.Footer>
               </Card>
             </Col>
-            <Col>
+            </CardGroup>
+            ))}
+            {/* <Col>
               <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
                 <Card.Body>
                   <Card.Title>Tuesday</Card.Title>
                   <Card.Text>
@@ -267,7 +284,7 @@ function Mood() {
                 </Card.Footer>
               </Card>
             </Col>
-          </CardGroup>
+          </CardGroup> */}
         </Container>
       </div>
     </>

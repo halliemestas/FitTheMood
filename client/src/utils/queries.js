@@ -25,3 +25,14 @@ export const QUERY_ONE_USER = gql`
     }
   }
 `;
+
+export const QUERY_MOODS = gql`
+  query getMoods {
+    savedMoods {
+      _id
+      overall
+      feeling
+      notes
+    }
+  }
+`;
