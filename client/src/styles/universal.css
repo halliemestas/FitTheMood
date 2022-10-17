@@ -31,12 +31,12 @@
 
 .mainDiv {
   background-color: #fff4ea;
-  padding-bottom: 30px;
+  padding-bottom: 70px !important;
   width: 100%;
   text-align: center;
   border: 15px solid #86340A;
   padding: 2px;
-  margin: 20px auto;
+  margin: 40px auto;
   position: relative;
   top: 100px;
   margin-bottom: 120px;
