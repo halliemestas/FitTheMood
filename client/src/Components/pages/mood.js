@@ -19,6 +19,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_MOOD } from "../../utils/mutations";
 
 const Mood = () => {
+  const todaysDate = Date(Date.now());
   //triggering modal to pop up
   const [show, setShow] = useState(false);
   //Close button
@@ -208,7 +209,7 @@ const Mood = () => {
                   <Card.Text>{formState}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  <small className="text-muted">Date here</small>
+                  <small className="text-muted">{todaysDate}</small>
                 </Card.Footer>
               </Card>
             </Col>
