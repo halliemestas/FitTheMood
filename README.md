@@ -35,7 +35,13 @@
 
 ## Screenshots💡
 
-#### Screenshots here
+![Screenshot 1](client/src/images/signup-screenshot.png)
+
+![Screenshot 2](client/src/images/home-screenshot.png)
+
+![Screenshot 3](client/src/images/moods-screenshot.png)
+
+![Screenshot 4](client/src/images/workout-screenshot.png)
 
 ---
 
