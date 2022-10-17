@@ -35,7 +35,7 @@ function Home() {
       <Container>
         <Row>
           <Col>
-            <img src={paul} alt="Paul" id="paul"></img>
+            <img src={paul} alt="Paul" id="paul" style="width 5rem"></img>
             <div className="skillbar-wrapper">
               <div className="skillbar clearfix html5" data-percent="100%">
                 <h4 className="skillbar-title">

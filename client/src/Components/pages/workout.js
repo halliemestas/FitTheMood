@@ -81,7 +81,7 @@ const Mood = () => {
           <div className="paul" style={{ textAlign: "center" }}>
             <Row>
               <Col>
-                <img src={paul} alt="Paul" style={{ width: "15rem" }}></img>
+                <img src={paul} alt="Paul" style={{ width: "5rem" }}></img>
               </Col>
               <Col>
                 <div>
