@@ -12,12 +12,13 @@ import Row from "react-bootstrap/Row";
 import paul from "../../images/Paul.png";
 import Container from "react-bootstrap/Container";
 import CardGroup from "react-bootstrap/CardGroup";
-import { Link } from "react-router-dom";
+
+import AuthService from "../../utils/auth";
 import { useMutation } from "@apollo/client";
 
-import { ADD_MOOD, ADD_SKILL } from "../../utils/mutations";
+import { ADD_MOOD } from "../../utils/mutations";
 
-const Mood = ({ moods = false}) => {
+const Mood = ({ mood }) => {
   //triggering modal to pop up
   const [show, setShow] = useState(false);
   //Close button
@@ -27,25 +28,30 @@ const Mood = ({ moods = false}) => {
   //Sets default value of range slider to 5
   const [value, setValue] = React.useState(5);
 
-  const [mood, setMood] = useState("");
+  const [enteredText, setEnteredText] = useState("");
+  const [formState, setFormState] = useState(null);
+  let [toggleCards, setToggleCards] = useState(false);
 
-  const [addMood, { error }] = useMutation(ADD_MOOD);
+  const [addNotes, { error, data }] = useMutation(ADD_MOOD);
 
-  const handleFormSubmit = async (event) => {
+  const textChangeHandler = (e) => {
+    setEnteredText(e.target.value);
+  };
+
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+
+  //   setFormState({
+  //     ...formState,
+  //     [name]: value,
+  //   });
+  // };
+
+  const submitHandler = (event) => {
     event.preventDefault();
-
-    try {
-      const data = await addMood({
-        variables: { mood },
-      });
-
-      setMood("");
-    } catch (err) {
-      console.error(err);
-    }
-    if (!moods.length) {
-      return <h3>No Skills Yet</h3>;
-    }
+    setFormState(enteredText);
+    console.log(formState);
+    setEnteredText("");
   };
 
   return (
@@ -75,9 +81,9 @@ const Mood = ({ moods = false}) => {
                 <Modal.Title>Mood Questionaire</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form>
+                <Form onSubmit={submitHandler}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Rate your mood</Form.Label>
+                    {/* <Form.Label>Rate your mood</Form.Label>
                     <RangeSlider
                       min={1}
                       max={10}
@@ -97,7 +103,6 @@ const Mood = ({ moods = false}) => {
                           label="happy"
                           name="group1"
                           type={type}
-                          val
                           id={`inline-${type}-1`}
                         />
                         <Form.Check
@@ -144,16 +149,16 @@ const Mood = ({ moods = false}) => {
                           id={`inline-${type}-3`}
                         />
                       </div>
-                    ))}
+                    ))}*/}
                     <Form.Label>
-                      Is there anything you would like to note about today
-                    </Form.Label>
+                      Describe your mood
+                    </Form.Label> 
                     <Form.Control
                       as="textarea"
                       rows={3}
-                      value={mood}
+                      value={enteredText}
                       className="form-input w-100"
-                      onChange={(event) => setMood(event.target.value)}
+                      onChange={textChangeHandler}
                     />
                   </Form.Group>
                 </Form>
@@ -168,8 +173,9 @@ const Mood = ({ moods = false}) => {
                 </Button>
                 <Button
                   variant="primary"
-                  onClick={handleClose}
+                  onClick={submitHandler}
                   className="buttonFormatter"
+                  type="submit"
                 >
                   Save
                 </Button>
@@ -177,25 +183,20 @@ const Mood = ({ moods = false}) => {
             </Modal>
           </div>
           <Col xs={1} md={3} lg={4}></Col>
-          {moods &&
-          moods.map((mood) => (
-          <CardGroup className="cardGroup" key={mood._id} >
+          <CardGroup className="cardGroup">
             <Col>
               <Card>
                 <Card.Body>
                   <Card.Title>Monday</Card.Title>
-                  <Card.Text>
-                    {mood}
-                  </Card.Text>
+                  <Card.Text>{formState}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
                   <small className="text-muted">Date here</small>
                 </Card.Footer>
               </Card>
             </Col>
-            </CardGroup>
-            ))}
-            {/* <Col>
+          </CardGroup>
+          {/* <Col>
               <Card>
                 <Card.Body>
                   <Card.Title>Tuesday</Card.Title>
@@ -289,6 +290,6 @@ const Mood = ({ moods = false}) => {
       </div>
     </>
   );
-}
+};
 
 export default Mood;
