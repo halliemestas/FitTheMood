@@ -9,6 +9,8 @@ import { useMutation } from "@apollo/client";
 
 import { ADD_USER } from "../../utils/mutations";
 
+import { Link } from "react-router-dom";
+
 const SignupForm = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
@@ -119,14 +121,16 @@ const SignupForm = () => {
             Password is required
           </Form.Control.Feedback>
         </Form.Group>
-        <Button
-          disabled={!(userFormData.username && userFormData.password)}
-          type="submit"
-          variant="success"
-          className="buttonFormatter signupButton"
-        >
-          Signup
-        </Button>
+        <Link to="/home">
+          <Button
+            disabled={!(userFormData.username && userFormData.password)}
+            type="submit"
+            variant="success"
+            className="buttonFormatter signupButton"
+          >
+            Signup
+          </Button>
+        </Link>
       </Form>
       <hr className="horizontalRule" />
     </div>
