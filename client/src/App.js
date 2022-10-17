@@ -54,9 +54,9 @@ function App() {
                 path="/"
                 element={[<SignupForm />, <Login />]}
               ></Route>
-              <Route exact path="/home" element={<Home />}></Route>
-              <Route exact path="/mood" element={<Mood />}></Route>
-              <Route exact path="/workout" element={<Workout />}></Route>
+              <Route path="/home" element={<Home />}></Route>
+              <Route path="/mood" element={<Mood />}></Route>
+              <Route path="/workout" element={<Workout />}></Route>
             </Routes>
           </div>
           <Footer />
