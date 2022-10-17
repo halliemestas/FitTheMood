@@ -22,9 +22,7 @@ function WorkoutForm() {
   return (
     <>
       <div className="mainDiv">
-        <h1 className="headers">
-        Log your workouts!
-        </h1>
+        <h1 className="headers">Log your workouts!</h1>
         <Container>
           <div className="paul" style={{ textAlign: "center" }}>
             <Row>
@@ -33,16 +31,13 @@ function WorkoutForm() {
               </Col>
               <Col>
                 <div>
-                  <h2 className="paulGreeting"
-                  >
-                    Howdy!
-                  </h2>
+                  <h2 className="paulGreeting">Howdy!</h2>
                 </div>
               </Col>
             </Row>
           </div>
           <div>
-            <Button  className="m-3 buttonFormatter" onClick={handleShow}>
+            <Button className="m-3 buttonFormatter" onClick={handleShow}>
               Add Workout!
             </Button>
 
@@ -55,49 +50,66 @@ function WorkoutForm() {
                   <Form.Group>
                     <Form.Label>How long did you workout for?</Form.Label>
                     <Form.Check
-                        type="radio"
-                        label="0-30 Minutes"
-                        name="formHorizontalRadios"
-                        id="formHorizontalRadios1"
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="30-60 Minutes"
-                        name="formHorizontalRadios"
-                        id="formHorizontalRadios2"
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="60-90 Minutes"
-                        name="formHorizontalRadios"
-                        id="formHorizontalRadios3"
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="90+ Minutes"
-                        name="formHorizontalRadios"
-                        id="formHorizontalRadios3"
-                      />
-
+                      type="radio"
+                      label="0-30 Minutes"
+                      name="formHorizontalRadios"
+                      id="formHorizontalRadios1"
+                    />
+                    <Form.Check
+                      type="radio"
+                      label="30-60 Minutes"
+                      name="formHorizontalRadios"
+                      id="formHorizontalRadios2"
+                    />
+                    <Form.Check
+                      type="radio"
+                      label="60-90 Minutes"
+                      name="formHorizontalRadios"
+                      id="formHorizontalRadios3"
+                    />
+                    <Form.Check
+                      type="radio"
+                      label="90+ Minutes"
+                      name="formHorizontalRadios"
+                      id="formHorizontalRadios3"
+                    />
                   </Form.Group>
 
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>What type of workout did you do?</Form.Label>
-                    <Form.Control type="email" placeholder="Enter workout type" as="textarea" rows={1} />
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter workout type"
+                      as="textarea"
+                      rows={1}
+                    />
                     <Form.Text className="text-muted"></Form.Text>
                   </Form.Group>
 
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Summary of your workout.</Form.Label>
-                    <Form.Control type="Summary" placeholder="Summary" as="textarea" rows={3} />
+                    <Form.Control
+                      type="Summary"
+                      placeholder="Summary"
+                      as="textarea"
+                      rows={3}
+                    />
                   </Form.Group>
-                    </Form>
-                  </Modal.Body>
+                </Form>
+              </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose} className="buttonFormatter">
+                <Button
+                  variant="secondary"
+                  onClick={handleClose}
+                  className="buttonFormatter"
+                >
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose} className="buttonFormatter">
+                <Button
+                  variant="primary"
+                  onClick={handleClose}
+                  className="buttonFormatter"
+                >
                   Save
                 </Button>
               </Modal.Footer>
