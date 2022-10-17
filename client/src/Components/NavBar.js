@@ -12,9 +12,7 @@ export default (props) => {
       <Menu {...props} right>
         <ul>
           <li>
-            <NavLink exact="true" to="/home">
-              Home
-            </NavLink>
+            <NavLink to="/home">Home</NavLink>
           </li>
           <li>
             <NavLink to="/workout">Workouts</NavLink>
