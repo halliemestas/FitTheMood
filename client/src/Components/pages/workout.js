@@ -1,7 +1,9 @@
 /** @format */
+
 import React from "react";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
+import RangeSlider from "react-bootstrap-range-slider";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -11,20 +13,70 @@ import paul from "../../images/Paul.png";
 import Container from "react-bootstrap/Container";
 import CardGroup from "react-bootstrap/CardGroup";
 
-function WorkoutForm() {
+import Auth from "../../utils/auth";
+import { useMutation } from "@apollo/client";
+
+import { ADD_MOOD } from "../../utils/mutations";
+
+const Mood = () => {
   //triggering modal to pop up
   const [show, setShow] = useState(false);
   //Close button
   const handleClose = () => setShow(false);
   //Save button
   const handleShow = () => setShow(true);
+  //Sets default value of range slider to 5
+  // const [value, setValue] = React.useState(5);
+
+  const [enteredText, setEnteredText] = useState("");
+  const [formState, setFormState] = useState(null);
+  // let [toggleCards, setToggleCards] = useState(false);
+
+  const [addMood, { error, data }] = useMutation(ADD_MOOD);
+
+  const textChangeHandler = (e) => {
+    setEnteredText(e.target.value);
+  };
+
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+
+  //   setFormState({
+  //     ...formState,
+  //     [name]: value,
+  //   });
+  // };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    setFormState(enteredText);
+    // console.log(formState);
+    // console.log(enteredText);
+
+    // setEnteredText("");
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      console.log("test");
+      const response = await addMood(enteredText);
+
+      if (!response) {
+        console.log("Something went wrong");
+      }
+    } catch {
+      console.log("Catch block");
+    }
+  };
 
   return (
     <>
       <div className="mainDiv">
-        <h1 className="headers">
-        Log your workouts!
-        </h1>
+        <h1 className="headers">Log your workout!</h1>
         <Container>
           <div className="paul" style={{ textAlign: "center" }}>
             <Row>
@@ -33,16 +85,13 @@ function WorkoutForm() {
               </Col>
               <Col>
                 <div>
-                  <h2 className="paulGreeting"
-                  >
-                    Howdy!
-                  </h2>
+                  <h2 className="paulGreeting">Howdy!</h2>
                 </div>
               </Col>
             </Row>
           </div>
           <div>
-            <Button  className="m-3 buttonFormatter" onClick={handleShow}>
+            <Button className="m-3 buttonFormatter" onClick={handleShow}>
               Add Workout!
             </Button>
 
@@ -51,53 +100,33 @@ function WorkoutForm() {
                 <Modal.Title>Workout Questionaire</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form>
-                  <Form.Group>
-                    <Form.Label>How long did you workout for?</Form.Label>
-                    <Form.Check
-                        type="radio"
-                        label="0-30 Minutes"
-                        name="formHorizontalRadios"
-                        id="formHorizontalRadios1"
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="30-60 Minutes"
-                        name="formHorizontalRadios"
-                        id="formHorizontalRadios2"
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="60-90 Minutes"
-                        name="formHorizontalRadios"
-                        id="formHorizontalRadios3"
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="90+ Minutes"
-                        name="formHorizontalRadios"
-                        id="formHorizontalRadios3"
-                      />
-
-                  </Form.Group>
-
+                <Form onSubmit={submitHandler}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>What type of workout did you do?</Form.Label>
-                    <Form.Control type="email" placeholder="Enter workout type" as="textarea" rows={1} />
-                    <Form.Text className="text-muted"></Form.Text>
+                    <Form.Label>Describe your workout</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      value={enteredText}
+                      className="form-input w-100"
+                      onChange={textChangeHandler}
+                    />
                   </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Summary of your workout.</Form.Label>
-                    <Form.Control type="Summary" placeholder="Summary" as="textarea" rows={3} />
-                  </Form.Group>
-                    </Form>
-                  </Modal.Body>
+                </Form>
+              </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose} className="buttonFormatter">
+                <Button
+                  variant="secondary"
+                  onClick={handleClose}
+                  className="buttonFormatter"
+                >
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose} className="buttonFormatter">
+                <Button
+                  variant="primary"
+                  onClick={submitHandler}
+                  className="buttonFormatter"
+                  type="submit"
+                >
                   Save
                 </Button>
               </Modal.Footer>
@@ -107,107 +136,10 @@ function WorkoutForm() {
           <CardGroup className="cardGroup">
             <Col>
               <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
                 <Card.Body>
-                  <Card.Title>Monday</Card.Title>
-                  <Card.Text>
-                    User's answers to mood Questionaire go here and an image
-                    based on which adjective they picked for their mood?
-                  </Card.Text>
+                  <Card.Title>Your Latest Workout:</Card.Title>
+                  <Card.Text>{formState}</Card.Text>
                 </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Date here</small>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>Tuesday</Card.Title>
-                  <Card.Text>
-                    User's answers to mood Questionaire go here and an image
-                    based on which adjective they picked for their mood?
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Date here</small>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>Wednesday</Card.Title>
-                  <Card.Text>
-                    User's answers to mood Questionaire go here and an image
-                    based on which adjective they picked for their mood?
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Date here</small>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>Thursday</Card.Title>
-                  <Card.Text>
-                    User's answers to mood Questionaire go here and an image
-                    based on which adjective they picked for their mood?
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Date here</small>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>Friday</Card.Title>
-                  <Card.Text>
-                    User's answers to mood Questionaire go here and an image
-                    based on which adjective they picked for their mood?
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Date here</small>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>Saturday</Card.Title>
-                  <Card.Text>
-                    User's answers to mood Questionaire go here and an image
-                    based on which adjective they picked for their mood?
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Date here</small>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>Sunday</Card.Title>
-                  <Card.Text>
-                    User's answers to mood Questionaire go here and an image
-                    based on which adjective they picked for their mood?
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Date here</small>
-                </Card.Footer>
               </Card>
             </Col>
           </CardGroup>
@@ -215,6 +147,6 @@ function WorkoutForm() {
       </div>
     </>
   );
-}
+};
 
-export default WorkoutForm;
+export default Mood;
