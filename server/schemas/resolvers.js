@@ -39,20 +39,31 @@ const resolvers = {
 
       return { token, user };
     },
-    addWorkout: async (parent, { workoutId, duration, workout }, context) => {
+    addWorkout: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $push: {
-              savedWorkouts: {
-                workoutId: workoutId,
-                duration: duration,
-                workout: workout,
-              },
+              savedWorkouts: args,
             },
-          },
-          { new: true, runValidators: true }
+          }
+          // { new: true, runValidators: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    addMood: async (parent, args, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $push: {
+              savedMoods: args,
+            },
+          }
+          // { new: true, runValidators: true }
         );
         return updatedUser;
       }

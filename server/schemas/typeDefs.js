@@ -17,10 +17,7 @@ const typeDefs = gql`
   }
 
   type Mood {
-    moodId: String!
-    overall: Int!
-    feelings: [String]!
-    notes: String
+    notes: String!
   }
 
   type Auth {
@@ -36,6 +33,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addUser(username: String!, password: String!): Auth
     addWorkout(workoutId: String!, duration: String!, workout: String!): User
+    addMood(notes: String!): User
   }
 `;
 

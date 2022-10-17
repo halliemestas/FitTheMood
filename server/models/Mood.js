@@ -1,18 +1,19 @@
 const { Schema } = require("mongoose");
 
 const moodSchema = new Schema({
-  overall: {
-    type: Number,
-    required: true,
-  },
+  // overall: {
+  //   type: Number,
+  //   required: true,
+  // },
 
-  feeling: [
-    {
-      type: String,
-    },
-  ],
+  // feeling: [
+  //   {
+  //     type: String,
+  //   },
+  // ],
   notes: {
     type: String,
+    required: true,
   },
 });
 
