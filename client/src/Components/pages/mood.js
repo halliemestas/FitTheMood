@@ -93,7 +93,7 @@ const Mood = () => {
           </div>
           <div>
             <Button className="m-3 buttonFormatter" onClick={handleShow}>
-              Add Moods!
+              Add A Mood!
             </Button>
 
             <Modal show={show} onHide={handleClose}>
@@ -205,7 +205,7 @@ const Mood = () => {
             <Col>
               <Card>
                 <Card.Body>
-                  <Card.Title>Monday</Card.Title>
+                  <Card.Title>Your latest mood:</Card.Title>
                   <Card.Text>{formState}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
