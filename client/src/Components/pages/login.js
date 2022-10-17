@@ -101,7 +101,7 @@ const Login = () => {
             type="submit"
             variant="success"
             className="buttonFormatter loginButton"
-            onClick={handleFormSubmit}
+            // onClick={handleFormSubmit}
           >
             Login
           </Button>
