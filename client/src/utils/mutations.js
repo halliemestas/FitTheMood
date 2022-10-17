@@ -35,11 +35,12 @@ export const ADD_WORKOUT = gql`
 `;
 
 export const ADD_MOOD = gql`
-  mutation addMood($userId: ID!, $workout: String!) {
-    addMood(userId: $userId, workout: $workout) {
+  mutation addMood($feeling: String!) {
+    addMood(feeling: $feeling, notes: $notes, overall: $overall) {
       _id
-      username
-      savedMoods
+      feeling
+      notes
+      overall
     }
   }
 `;
