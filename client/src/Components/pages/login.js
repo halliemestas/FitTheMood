@@ -7,6 +7,8 @@ import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_USER } from "../../utils/mutations";
 
+import { Link } from "react-router-dom";
+
 const Login = () => {
   const [userFormData, setUserFormData] = useState({
     username: "",
@@ -93,16 +95,17 @@ const Login = () => {
             Need Password
           </Form.Control.Feedback>
         </Form.Group>
-
-        <Button
-          disabled={!(userFormData.username && userFormData.password)}
-          type="submit"
-          variant="success"
-          className="buttonFormatter loginButton"
-          onClick={handleFormSubmit}
-        >
-          Login
-        </Button>
+        <Link to="/home">
+          <Button
+            disabled={!(userFormData.username && userFormData.password)}
+            type="submit"
+            variant="success"
+            className="buttonFormatter loginButton"
+            onClick={handleFormSubmit}
+          >
+            Login
+          </Button>
+        </Link>
       </Form>
       <hr className="horizontalRule" />
     </div>
